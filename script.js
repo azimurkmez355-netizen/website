@@ -148,7 +148,7 @@
     canvas.height = window.innerHeight;
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
-    const colors = ['#3b82f6', '#22d3ee', '#f6a723', '#f3f5fa'];
+    const colors = ['#059669', '#0d9488', '#d97706', '#2dd4bf'];
     const particles = Array.from({ length: 36 }, () => ({
       x: rect.left + rect.width / 2,
       y: rect.top + rect.height / 2,
@@ -190,11 +190,20 @@
         const target = yearly ? el.dataset.yearly : el.dataset.monthly;
         animatePrice(el, target);
       });
-      periodEls.forEach((el) => { el.textContent = yearly ? '/ay (yıllık)' : '/ay'; });
+      periodEls.forEach((el) => { el.textContent = yearly ? '/yıl' : '/ay'; });
 
       if (yearly) burstConfetti(billingSwitch);
     });
   }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
 
   /* ---------- Subtle parallax on hero glows ---------- */
   if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
