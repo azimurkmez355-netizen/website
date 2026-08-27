@@ -205,45 +205,4 @@
     });
   });
 
-  /* ---------- Hero background video: custom fade loop ---------- */
-  const heroVideo = document.getElementById('heroVideo');
-  if (heroVideo) {
-    let fadeRAF = null;
-    let fadingOut = false;
-
-    function fadeVideoTo(target, duration) {
-      if (fadeRAF) cancelAnimationFrame(fadeRAF);
-      const start = parseFloat(getComputedStyle(heroVideo).opacity) || 0;
-      const startTime = performance.now();
-      function step(now) {
-        const progress = Math.min((now - startTime) / duration, 1);
-        heroVideo.style.opacity = String(start + (target - start) * progress);
-        if (progress < 1) {
-          fadeRAF = requestAnimationFrame(step);
-        } else {
-          fadeRAF = null;
-        }
-      }
-      fadeRAF = requestAnimationFrame(step);
-    }
-
-    heroVideo.addEventListener('loadeddata', () => fadeVideoTo(1, 500), { once: true });
-
-    heroVideo.addEventListener('timeupdate', () => {
-      if (!fadingOut && heroVideo.duration && heroVideo.duration - heroVideo.currentTime <= 0.55) {
-        fadingOut = true;
-        fadeVideoTo(0, 500);
-      }
-    });
-
-    heroVideo.addEventListener('ended', () => {
-      heroVideo.style.opacity = '0';
-      setTimeout(() => {
-        heroVideo.currentTime = 0;
-        fadingOut = false;
-        heroVideo.play();
-        fadeVideoTo(1, 500);
-      }, 100);
-    });
-  }
 })();

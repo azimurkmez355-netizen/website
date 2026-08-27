@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
 </head>
 <body>
 
@@ -50,10 +51,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <video class="hero-video" id="heroVideo" autoplay muted playsinline aria-hidden="true">
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4" type="video/mp4">
-    </video>
-    <div class="hero-video-overlay" aria-hidden="true"></div>
+    <spline-viewer class="hero-embed" url="https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode" aria-hidden="true"></spline-viewer>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="hero-content">
       <span class="eyebrow fade-up" style="animation-delay:.15s">
