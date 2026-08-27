@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%231d4ed8%22/><path d=%22M6.5 12.5l3.5 3.5 7.5-7.5%22 stroke=%22white%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,104 +50,36 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-      <div class="glow glow-3"></div>
-      <div class="grid-overlay"></div>
-    </div>
+    <video class="hero-video" id="heroVideo" autoplay muted playsinline aria-hidden="true">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay" aria-hidden="true"></div>
 
-    <div class="container hero-grid">
-      <div class="hero-inner">
-        <span class="eyebrow reveal">
-          <span class="dot"></span> Yazılım geliştirme &amp; danışmanlık
-        </span>
-        <h1 class="hero-title">
-          <span class="word" style="animation-delay:.1s">Güçlü</span> <span class="word" style="animation-delay:.18s">Yazılımlar.</span><br>
-          <span class="gradient-text"><span class="word" style="animation-delay:.26s">Sağlam</span> <span class="word" style="animation-delay:.34s">Temeller.</span></span>
-        </h1>
-        <p class="hero-sub reveal" style="transition-delay:.1s">
-          Fortify; web, mobil ve bulut tabanlı yazılım çözümleriyle fikrinizi
-          güvenilir, ölçeklenebilir ve sağlam bir ürüne dönüştürür.
-        </p>
+    <div class="hero-content">
+      <span class="eyebrow reveal">
+        <span class="dot"></span> Yazılım geliştirme &amp; danışmanlık
+      </span>
+      <h1 class="hero-title">
+        <span class="word" style="animation-delay:.1s">Güçlü</span> <span class="word" style="animation-delay:.18s">Yazılımlar.</span><br>
+        <span class="gradient-text"><span class="word" style="animation-delay:.26s">Sağlam</span> <span class="word" style="animation-delay:.34s">Temeller.</span></span>
+      </h1>
+      <p class="hero-sub reveal" style="transition-delay:.1s">
+        Fortify; web, mobil ve bulut tabanlı yazılım çözümleriyle fikrinizi
+        güvenilir, ölçeklenebilir ve sağlam bir ürüne dönüştürür.
+      </p>
 
-        <div class="hero-actions reveal" style="transition-delay:.15s">
-          <button class="btn btn-primary btn-lg" data-cta="Bilgi almak istiyorum">
-            Hemen Başla
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-          <a href="#hizmetler" class="btn btn-ghost btn-lg">Hizmetleri Keşfet</a>
-        </div>
-
-        <a href="#hizmetler" class="scroll-hint reveal" style="transition-delay:.2s" aria-label="Aşağı kaydır">
-          <span>Kaydır</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </a>
+      <div class="hero-actions reveal" style="transition-delay:.15s">
+        <button class="btn btn-primary btn-lg" data-cta="Bilgi almak istiyorum">
+          Hemen Başla
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+        <a href="#hizmetler" class="btn btn-ghost btn-lg">Hizmetleri Keşfet</a>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hv-main">
-          <div class="hv-dots">
-            <span></span><span></span><span></span>
-            <span class="hv-dots-label">Canlı</span>
-          </div>
-
-          <div class="hv-kpi-row">
-            <div class="hv-kpi">
-              <div class="hv-ring">
-                <svg viewBox="0 0 44 44">
-                  <defs>
-                    <linearGradient id="hvRingGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#60a5fa"/>
-                      <stop offset="1" stop-color="#1d4ed8"/>
-                    </linearGradient>
-                  </defs>
-                  <circle class="hv-ring-bg" cx="22" cy="22" r="18"></circle>
-                  <circle class="hv-ring-fg" cx="22" cy="22" r="18"></circle>
-                </svg>
-              </div>
-              <div>
-                <span class="hv-kpi-num">Performans</span>
-                <span class="hv-kpi-label">Son 30 gün</span>
-              </div>
-            </div>
-            <div class="hv-kpi">
-              <div class="hv-avatars">
-                <span class="hv-avatar"></span><span class="hv-avatar"></span><span class="hv-avatar"></span>
-              </div>
-              <div>
-                <span class="hv-kpi-num">12 Aktif</span>
-                <span class="hv-kpi-label">Ekip üyesi</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hv-chart-wrap">
-            <svg class="hv-trend" viewBox="0 0 300 90" preserveAspectRatio="none">
-              <polyline points="0,56 50,32 100,47 150,16 200,36 250,5 300,43"></polyline>
-            </svg>
-            <div class="hv-chart">
-              <span style="--h:38%"></span><span style="--h:64%"></span><span style="--h:48%"></span><span style="--h:82%"></span><span style="--h:60%"></span><span style="--h:94%"></span><span style="--h:52%"></span>
-            </div>
-          </div>
-
-          <div class="hv-line hv-line--w60"></div>
-          <div class="hv-line hv-line--w40"></div>
-          <div class="hv-line hv-line--w50"></div>
-        </div>
-        <div class="hv-badge hv-badge--1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-          <span>Güvenli Altyapı</span>
-        </div>
-        <div class="hv-badge hv-badge--2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"></polyline><polyline points="16 6 22 12 16 18"></polyline></svg>
-          <span>%100 Özel Kod</span>
-        </div>
-        <div class="hv-badge hv-badge--3">
-          <span class="hv-pulse"></span>
-          <span>Canlı İzleme</span>
-        </div>
-      </div>
+      <a href="#hizmetler" class="scroll-hint reveal" style="transition-delay:.2s" aria-label="Aşağı kaydır">
+        <span>Kaydır</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </a>
     </div>
   </section>
 
@@ -159,25 +91,25 @@
     <div class="marquee-wrap">
       <div class="marquee-track">
         <!-- set A -->
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/react/64748b" alt="React" width="28" height="28" loading="lazy"><em>React</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/nextdotjs/64748b" alt="Next.js" width="28" height="28" loading="lazy"><em>Next.js</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/typescript/64748b" alt="TypeScript" width="28" height="28" loading="lazy"><em>TypeScript</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/nodedotjs/64748b" alt="Node.js" width="28" height="28" loading="lazy"><em>Node.js</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/python/64748b" alt="Python" width="28" height="28" loading="lazy"><em>Python</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/docker/64748b" alt="Docker" width="28" height="28" loading="lazy"><em>Docker</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/kubernetes/64748b" alt="Kubernetes" width="28" height="28" loading="lazy"><em>Kubernetes</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/postgresql/64748b" alt="PostgreSQL" width="28" height="28" loading="lazy"><em>PostgreSQL</em></span>
-        <span class="tech-item"><img src="https://cdn.simpleicons.org/googlecloud/64748b" alt="Google Cloud" width="28" height="28" loading="lazy"><em>Google Cloud</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/react/94a3b8" alt="React" width="28" height="28" loading="lazy"><em>React</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/nextdotjs/94a3b8" alt="Next.js" width="28" height="28" loading="lazy"><em>Next.js</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/typescript/94a3b8" alt="TypeScript" width="28" height="28" loading="lazy"><em>TypeScript</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/nodedotjs/94a3b8" alt="Node.js" width="28" height="28" loading="lazy"><em>Node.js</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/python/94a3b8" alt="Python" width="28" height="28" loading="lazy"><em>Python</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/docker/94a3b8" alt="Docker" width="28" height="28" loading="lazy"><em>Docker</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/kubernetes/94a3b8" alt="Kubernetes" width="28" height="28" loading="lazy"><em>Kubernetes</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/postgresql/94a3b8" alt="PostgreSQL" width="28" height="28" loading="lazy"><em>PostgreSQL</em></span>
+        <span class="tech-item"><img src="https://cdn.simpleicons.org/googlecloud/94a3b8" alt="Google Cloud" width="28" height="28" loading="lazy"><em>Google Cloud</em></span>
         <!-- set B (duplicate for seamless loop) -->
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/react/64748b" alt="" width="28" height="28" loading="lazy"><em>React</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/nextdotjs/64748b" alt="" width="28" height="28" loading="lazy"><em>Next.js</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/typescript/64748b" alt="" width="28" height="28" loading="lazy"><em>TypeScript</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/nodedotjs/64748b" alt="" width="28" height="28" loading="lazy"><em>Node.js</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/python/64748b" alt="" width="28" height="28" loading="lazy"><em>Python</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/docker/64748b" alt="" width="28" height="28" loading="lazy"><em>Docker</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/kubernetes/64748b" alt="" width="28" height="28" loading="lazy"><em>Kubernetes</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/postgresql/64748b" alt="" width="28" height="28" loading="lazy"><em>PostgreSQL</em></span>
-        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/googlecloud/64748b" alt="" width="28" height="28" loading="lazy"><em>Google Cloud</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/react/94a3b8" alt="" width="28" height="28" loading="lazy"><em>React</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/nextdotjs/94a3b8" alt="" width="28" height="28" loading="lazy"><em>Next.js</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/typescript/94a3b8" alt="" width="28" height="28" loading="lazy"><em>TypeScript</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/nodedotjs/94a3b8" alt="" width="28" height="28" loading="lazy"><em>Node.js</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/python/94a3b8" alt="" width="28" height="28" loading="lazy"><em>Python</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/docker/94a3b8" alt="" width="28" height="28" loading="lazy"><em>Docker</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/kubernetes/94a3b8" alt="" width="28" height="28" loading="lazy"><em>Kubernetes</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/postgresql/94a3b8" alt="" width="28" height="28" loading="lazy"><em>PostgreSQL</em></span>
+        <span class="tech-item" aria-hidden="true"><img src="https://cdn.simpleicons.org/googlecloud/94a3b8" alt="" width="28" height="28" loading="lazy"><em>Google Cloud</em></span>
       </div>
     </div>
   </section>
@@ -192,7 +124,7 @@
       </div>
 
       <div class="services-grid">
-        <article class="service-card reveal">
+        <article class="service-card liquid-glass reveal">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"></polyline><polyline points="16 6 22 12 16 18"></polyline></svg>
           </div>
@@ -200,7 +132,7 @@
           <p>Modern, hızlı ve SEO uyumlu web siteleri ile karmaşık SaaS panellerine kadar uçtan uca geliştirme.</p>
         </article>
 
-        <article class="service-card reveal" style="transition-delay:.05s">
+        <article class="service-card liquid-glass reveal" style="transition-delay:.05s">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="11" y1="18" x2="13" y2="18"></line></svg>
           </div>
@@ -208,7 +140,7 @@
           <p>iOS ve Android için tek koddan, native performansta çalışan mobil uygulamalar.</p>
         </article>
 
-        <article class="service-card reveal" style="transition-delay:.1s">
+        <article class="service-card liquid-glass reveal" style="transition-delay:.1s">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
           </div>
@@ -216,7 +148,7 @@
           <p>Ölçeklenebilir, güvenli ve maliyet etkin bulut mimarileri ile SaaS ürünleri tasarlıyoruz.</p>
         </article>
 
-        <article class="service-card reveal">
+        <article class="service-card liquid-glass reveal">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
           </div>
@@ -224,7 +156,7 @@
           <p>Süreçlerinize özel ERP, CRM ve iş otomasyonu çözümleriyle verimliliği artırıyoruz.</p>
         </article>
 
-        <article class="service-card reveal" style="transition-delay:.05s">
+        <article class="service-card liquid-glass reveal" style="transition-delay:.05s">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
           </div>
@@ -232,7 +164,7 @@
           <p>Uygulama ve altyapınızı güvenlik açıklarına karşı test ediyor, sağlamlaştırıyoruz.</p>
         </article>
 
-        <article class="service-card reveal" style="transition-delay:.1s">
+        <article class="service-card liquid-glass reveal" style="transition-delay:.1s">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="1.5"></rect><rect x="2" y="14" width="20" height="7" rx="1.5"></rect><line x1="6" y1="6.5" x2="6.01" y2="6.5"></line><line x1="6" y1="17.5" x2="6.01" y2="17.5"></line></svg>
           </div>
@@ -255,7 +187,7 @@
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-marker">01</div>
-          <div class="timeline-content">
+          <div class="timeline-content liquid-glass">
             <div class="timeline-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </div>
@@ -266,7 +198,7 @@
 
         <div class="timeline-item reveal" style="transition-delay:.05s">
           <div class="timeline-marker">02</div>
-          <div class="timeline-content">
+          <div class="timeline-content liquid-glass">
             <div class="timeline-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
             </div>
@@ -277,7 +209,7 @@
 
         <div class="timeline-item reveal" style="transition-delay:.1s">
           <div class="timeline-marker">03</div>
-          <div class="timeline-content">
+          <div class="timeline-content liquid-glass">
             <div class="timeline-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"></polyline><polyline points="16 6 22 12 16 18"></polyline></svg>
             </div>
@@ -288,7 +220,7 @@
 
         <div class="timeline-item reveal" style="transition-delay:.15s">
           <div class="timeline-marker">04</div>
-          <div class="timeline-content">
+          <div class="timeline-content liquid-glass">
             <div class="timeline-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><polyline points="8.5 12.5 11 15 16 9"></polyline></svg>
             </div>
@@ -311,19 +243,19 @@
         </div>
 
         <div class="why-stats">
-          <div class="stat-card reveal">
+          <div class="stat-card liquid-glass reveal">
             <span class="stat-value" data-target="100" data-suffix="%">0%</span>
             <span class="stat-label">Özel Geliştirme</span>
           </div>
-          <div class="stat-card reveal" style="transition-delay:.05s">
+          <div class="stat-card liquid-glass reveal" style="transition-delay:.05s">
             <span class="stat-value" data-static="7/24">7/24</span>
             <span class="stat-label">Destek Hattı</span>
           </div>
-          <div class="stat-card reveal" style="transition-delay:.1s">
+          <div class="stat-card liquid-glass reveal" style="transition-delay:.1s">
             <span class="stat-value" data-target="3" data-suffix=" Adım">0 Adım</span>
             <span class="stat-label">Hızlı Teklif Süreci</span>
           </div>
-          <div class="stat-card reveal" style="transition-delay:.15s">
+          <div class="stat-card liquid-glass reveal" style="transition-delay:.15s">
             <span class="stat-value" data-static="0">0</span>
             <span class="stat-label">Şablon Site</span>
           </div>
@@ -344,31 +276,31 @@
 
     <div class="marquee-wrap testimonial-row">
       <div class="marquee-track">
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">EY</span><div><p class="t-name">Elif Yıldız</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Fortify ile 3 haftada tamamen yeni bir web sitesine kavuştuk, süreç boyunca hep bilgilendirildik.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">MA</span><div><p class="t-name">Mert Aydın</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Ekip taleplerimizi çok hızlı anlayıp uyguladı, iletişim hiç kopmadı.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">ZK</span><div><p class="t-name">Zeynep Kaya</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Mobil uygulamamız artık çok daha akıcı çalışıyor, kullanıcılarımız memnun.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">BŞ</span><div><p class="t-name">Burak Şahin</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Teklif sürecinden teslimata kadar her adım şeffaftı, tavsiye ederim.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">SD</span><div><p class="t-name">Selin Demir</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Panelimiz baştan tasarlandı, artık raporlama dakikalar sürüyor.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">EY</span><div><p class="t-name">Elif Yıldız</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Fortify ile 3 haftada tamamen yeni bir web sitesine kavuştuk, süreç boyunca hep bilgilendirildik.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">MA</span><div><p class="t-name">Mert Aydın</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Ekip taleplerimizi çok hızlı anlayıp uyguladı, iletişim hiç kopmadı.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">ZK</span><div><p class="t-name">Zeynep Kaya</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Mobil uygulamamız artık çok daha akıcı çalışıyor, kullanıcılarımız memnun.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">BŞ</span><div><p class="t-name">Burak Şahin</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Teklif sürecinden teslimata kadar her adım şeffaftı, tavsiye ederim.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">SD</span><div><p class="t-name">Selin Demir</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Panelimiz baştan tasarlandı, artık raporlama dakikalar sürüyor.</blockquote></div>
         <!-- duplicate for seamless loop -->
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">EY</span><div><p class="t-name">Elif Yıldız</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Fortify ile 3 haftada tamamen yeni bir web sitesine kavuştuk, süreç boyunca hep bilgilendirildik.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">MA</span><div><p class="t-name">Mert Aydın</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Ekip taleplerimizi çok hızlı anlayıp uyguladı, iletişim hiç kopmadı.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">ZK</span><div><p class="t-name">Zeynep Kaya</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Mobil uygulamamız artık çok daha akıcı çalışıyor, kullanıcılarımız memnun.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">BŞ</span><div><p class="t-name">Burak Şahin</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Teklif sürecinden teslimata kadar her adım şeffaftı, tavsiye ederim.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">SD</span><div><p class="t-name">Selin Demir</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Panelimiz baştan tasarlandı, artık raporlama dakikalar sürüyor.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">EY</span><div><p class="t-name">Elif Yıldız</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Fortify ile 3 haftada tamamen yeni bir web sitesine kavuştuk, süreç boyunca hep bilgilendirildik.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">MA</span><div><p class="t-name">Mert Aydın</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Ekip taleplerimizi çok hızlı anlayıp uyguladı, iletişim hiç kopmadı.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">ZK</span><div><p class="t-name">Zeynep Kaya</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Mobil uygulamamız artık çok daha akıcı çalışıyor, kullanıcılarımız memnun.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">BŞ</span><div><p class="t-name">Burak Şahin</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Teklif sürecinden teslimata kadar her adım şeffaftı, tavsiye ederim.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">SD</span><div><p class="t-name">Selin Demir</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Panelimiz baştan tasarlandı, artık raporlama dakikalar sürüyor.</blockquote></div>
       </div>
     </div>
 
     <div class="marquee-wrap testimonial-row">
       <div class="marquee-track marquee-track--reverse">
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">KÖ</span><div><p class="t-name">Kerem Öztürk</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Güvenlik denetimi sayesinde fark etmediğimiz açıkları kapattık.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">AÇ</span><div><p class="t-name">Aslı Çelik</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Bulut altyapımızı sıfırdan kurdular, maliyetlerimiz belirgin şekilde düştü.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">OK</span><div><p class="t-name">Onur Kılıç</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Destek ekibi WhatsApp'tan bile anında dönüş yapıyor, çok rahat.</blockquote></div>
-        <div class="testimonial-card"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">DA</span><div><p class="t-name">Deniz Arslan</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Küçük bütçemize rağmen büyük ajans kalitesinde bir site çıktı ortaya.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">KÖ</span><div><p class="t-name">Kerem Öztürk</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Güvenlik denetimi sayesinde fark etmediğimiz açıkları kapattık.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">AÇ</span><div><p class="t-name">Aslı Çelik</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Bulut altyapımızı sıfırdan kurdular, maliyetlerimiz belirgin şekilde düştü.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">OK</span><div><p class="t-name">Onur Kılıç</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Destek ekibi WhatsApp'tan bile anında dönüş yapıyor, çok rahat.</blockquote></div>
+        <div class="testimonial-card liquid-glass"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">DA</span><div><p class="t-name">Deniz Arslan</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Küçük bütçemize rağmen büyük ajans kalitesinde bir site çıktı ortaya.</blockquote></div>
         <!-- duplicate for seamless loop -->
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">KÖ</span><div><p class="t-name">Kerem Öztürk</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Güvenlik denetimi sayesinde fark etmediğimiz açıkları kapattık.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">AÇ</span><div><p class="t-name">Aslı Çelik</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Bulut altyapımızı sıfırdan kurdular, maliyetlerimiz belirgin şekilde düştü.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">OK</span><div><p class="t-name">Onur Kılıç</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Destek ekibi WhatsApp'tan bile anında dönüş yapıyor, çok rahat.</blockquote></div>
-        <div class="testimonial-card" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">DA</span><div><p class="t-name">Deniz Arslan</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Küçük bütçemize rağmen büyük ajans kalitesinde bir site çıktı ortaya.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">KÖ</span><div><p class="t-name">Kerem Öztürk</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Güvenlik denetimi sayesinde fark etmediğimiz açıkları kapattık.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#60a5fa;--av-b:#1d4ed8">AÇ</span><div><p class="t-name">Aslı Çelik</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Bulut altyapımızı sıfırdan kurdular, maliyetlerimiz belirgin şekilde düştü.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#2563eb;--av-b:#1e3a8a">OK</span><div><p class="t-name">Onur Kılıç</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Destek ekibi WhatsApp'tan bile anında dönüş yapıyor, çok rahat.</blockquote></div>
+        <div class="testimonial-card liquid-glass" aria-hidden="true"><div class="testimonial-head"><span class="avatar-badge" style="--av-a:#6b7280;--av-b:#374151">DA</span><div><p class="t-name">Deniz Arslan</p><p class="t-role">Fortify Müşterisi</p></div></div><blockquote>Küçük bütçemize rağmen büyük ajans kalitesinde bir site çıktı ortaya.</blockquote></div>
       </div>
     </div>
   </section>
@@ -391,7 +323,7 @@
       </div>
 
       <div class="pricing-grid">
-        <article class="price-card reveal">
+        <article class="price-card liquid-glass reveal">
           <h3>Başlangıç</h3>
           <p class="price-desc">Küçük işletmeler ve start-up'lar için</p>
           <div class="price-row">
@@ -430,7 +362,7 @@
           <button class="btn btn-primary btn-block" data-cta="Profesyonel paket hakkında bilgi almak istiyorum">Teklif Al</button>
         </article>
 
-        <article class="price-card reveal" style="transition-delay:.1s">
+        <article class="price-card liquid-glass reveal" style="transition-delay:.1s">
           <h3>Kurumsal</h3>
           <p class="price-desc">Büyük ölçekli ve özel ihtiyaçlar için</p>
           <div class="price-row">
@@ -461,7 +393,7 @@
       </div>
 
       <div class="faq-list">
-        <div class="faq-item reveal">
+        <div class="faq-item liquid-glass reveal">
           <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
             <span>Fiyatlandırma nasıl belirleniyor?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -471,7 +403,7 @@
           </div>
         </div>
 
-        <div class="faq-item reveal">
+        <div class="faq-item liquid-glass reveal">
           <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
             <span>Proje ne kadar sürede tamamlanır?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -481,7 +413,7 @@
           </div>
         </div>
 
-        <div class="faq-item reveal">
+        <div class="faq-item liquid-glass reveal">
           <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
             <span>Geliştirme sürecini nasıl takip ederim?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -491,7 +423,7 @@
           </div>
         </div>
 
-        <div class="faq-item reveal">
+        <div class="faq-item liquid-glass reveal">
           <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
             <span>Proje sonrası destek alıyor muyum?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -501,7 +433,7 @@
           </div>
         </div>
 
-        <div class="faq-item reveal">
+        <div class="faq-item liquid-glass reveal">
           <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
             <span>Mevcut sistemimize entegrasyon yapabilir misiniz?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -511,7 +443,7 @@
           </div>
         </div>
 
-        <div class="faq-item reveal">
+        <div class="faq-item liquid-glass reveal">
           <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
             <span>Nasıl teklif alabilirim?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -526,11 +458,7 @@
 
   <!-- FINAL CTA -->
   <section class="final-cta reveal">
-    <div class="container final-cta-inner">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
-      </div>
+    <div class="container final-cta-inner liquid-glass">
       <h2>Projenizi hayata geçirmeye <span class="gradient-text">hazır mısınız?</span></h2>
       <p>Bir mesaj kadar yakınız. Size en uygun çözümü birlikte konuşalım.</p>
       <button class="btn btn-primary btn-lg" data-cta="Bilgi almak istiyorum">
