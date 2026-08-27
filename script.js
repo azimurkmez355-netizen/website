@@ -148,7 +148,7 @@
     canvas.height = window.innerHeight;
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
-    const colors = ['#059669', '#0d9488', '#d97706', '#2dd4bf'];
+    const colors = ['#b8860b', '#8a6410', '#d9a635', '#4a3510'];
     const particles = Array.from({ length: 36 }, () => ({
       x: rect.left + rect.width / 2,
       y: rect.top + rect.height / 2,
