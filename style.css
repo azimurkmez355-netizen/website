@@ -40,14 +40,14 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 h1, h2, h3 {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   line-height: 1.15;
   text-wrap: balance;
@@ -184,9 +184,10 @@ button:focus-visible {
   text-align: center;
 }
 .section-head h2 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  letter-spacing: -0.02em;
   margin-bottom: 14px;
 }
 .section-head p { color: var(--text-muted); font-size: 1.05rem; }
@@ -281,7 +282,7 @@ button:focus-visible {
   filter: drop-shadow(0 4px 10px rgba(59, 130, 246, 0.5));
 }
 .logo-text {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 1.15rem;
   letter-spacing: -0.01em;
@@ -327,6 +328,7 @@ button:focus-visible {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
   background: #000;
 }
@@ -354,42 +356,44 @@ button:focus-visible {
 .hero-content {
   position: relative;
   z-index: 2;
-  flex: 1;
+  width: 100%;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 24px 56px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 24px 64px;
 }
+@media (min-width: 768px) {
+  .hero-content { padding: 0 48px 88px; }
+}
+
+.fade-up { opacity: 0; animation: fade-up 0.8s var(--ease) forwards; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
 .hero-title {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
   font-size: clamp(2.6rem, 7vw, 5.2rem);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   color: var(--text);
 }
-.hero-title .word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: word-in 0.8s var(--ease) forwards;
-}
-@keyframes word-in {
-  to { opacity: 1; transform: translateY(0); }
-}
 .hero-sub {
-  margin-top: 18px;
+  margin-top: 6px;
   max-width: 560px;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.75);
 }
-.hero-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-start; }
 
 .scroll-hint {
-  margin-top: 56px;
+  margin-top: 32px;
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 6px;
   font-size: 0.75rem;
@@ -521,7 +525,7 @@ button:focus-visible {
   background: var(--accent-gradient-strong);
   color: var(--on-accent);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
   box-shadow: 0 0 0 6px var(--bg), 0 10px 22px rgba(59, 130, 246, 0.4);
@@ -600,9 +604,10 @@ button:focus-visible {
   align-items: center;
 }
 .why-copy h2 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   margin: 4px 0 16px;
 }
 .why-copy p { color: var(--text-muted); font-size: 1.05rem; }
@@ -619,7 +624,7 @@ button:focus-visible {
 }
 .stat-value {
   display: block;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2.1rem;
   font-weight: 700;
   background: var(--accent-gradient);
@@ -661,7 +666,7 @@ button:focus-visible {
   flex-shrink: 0;
   background: linear-gradient(135deg, var(--av-a, #60a5fa), var(--av-b, #2563eb));
   color: var(--on-accent);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
 }
@@ -768,7 +773,7 @@ button:focus-visible {
 }
 
 .price-row { display: flex; align-items: baseline; gap: 6px; margin: 22px 0 24px; }
-.price-value { font-family: 'Space Grotesk', sans-serif; font-size: 2.1rem; font-weight: 700; }
+.price-value { font-family: 'Poppins', sans-serif; font-size: 2.1rem; font-weight: 700; }
 .price-card--popular .price-value { font-size: 2.3rem; }
 .price-period { color: var(--text-dim); font-size: 0.9rem; }
 
@@ -841,9 +846,10 @@ button:focus-visible {
   box-shadow: var(--shadow-glow);
 }
 .final-cta h2 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 3.8vw, 2.6rem);
   margin-bottom: 14px;
 }
 .final-cta p { color: var(--text-muted); margin-bottom: 32px; font-size: 1.05rem; }
