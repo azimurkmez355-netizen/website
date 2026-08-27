@@ -1,0 +1,8 @@
+{
+  "name": "fortify-website",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx --yes serve -s . -l $PORT"
+  }
+}
