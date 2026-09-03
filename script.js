@@ -114,6 +114,7 @@
   /* ---------- Pricing toggle ---------- */
   const billingSwitch = document.getElementById('billingSwitch');
   const priceValues = document.querySelectorAll('.price-value');
+  const priceWasEls = document.querySelectorAll('.price-was');
   const periodEls = document.querySelectorAll('.price-period');
   let yearly = false;
 
@@ -189,6 +190,11 @@
       priceValues.forEach((el) => {
         const target = yearly ? el.dataset.yearly : el.dataset.monthly;
         animatePrice(el, target);
+      });
+      priceWasEls.forEach((el) => {
+        const target = yearly ? el.dataset.yearly : el.dataset.monthly;
+        el.hidden = !target;
+        if (target) el.textContent = formatTL(target);
       });
       periodEls.forEach((el) => { el.textContent = yearly ? '/yıl' : '/ay'; });
 
