@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/admin", "destination": "/api/track?action=admin" },
+    { "source": "/api/visit", "destination": "/api/track?action=visit" },
+    { "source": "/api/heartbeat", "destination": "/api/track?action=heartbeat" },
+    { "source": "/api/click", "destination": "/api/track?action=click" }
+  ]
+}

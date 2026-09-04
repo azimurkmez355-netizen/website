@@ -2,10 +2,7 @@
   "name": "fortify-website",
   "private": true,
   "version": "1.0.0",
-  "scripts": {
-    "start": "node server.js"
-  },
   "dependencies": {
-    "express": "^5.2.1"
+    "@vercel/blob": "^2.8.0"
   }
 }
