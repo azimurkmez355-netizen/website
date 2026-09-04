@@ -7,7 +7,9 @@
   /* ---------- Visit & click tracking (feeds /admin) ---------- */
   let visitId = null;
 
-  fetch('/api/visit', { method: 'POST' })
+  // keepalive: true so a fast navigation/tab-close on mobile doesn't cancel
+  // this request before the visit actually gets recorded.
+  fetch('/api/visit', { method: 'POST', keepalive: true })
     .then((r) => r.json())
     .then((data) => { visitId = data.id; })
     .catch(() => {});
@@ -28,6 +30,12 @@
     if (document.visibilityState === 'hidden') sendHeartbeat();
   });
   window.addEventListener('pagehide', sendHeartbeat);
+
+  // Periodic heartbeat while the tab stays open and visible, so the admin
+  // panel can show who's on the site right now, not just who has left.
+  setInterval(() => {
+    if (document.visibilityState === 'visible') sendHeartbeat();
+  }, 20000);
 
   function trackClick(label) {
     if (visitId && label) sendBeaconJson('/api/click', { id: visitId, label });

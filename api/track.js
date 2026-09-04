@@ -35,13 +35,17 @@ function formatDate(ts) {
 async function renderAdmin(res) {
   const rows = await listVisits();
   const totalClicks = rows.reduce((sum, v) => sum + (v.clicks?.length || 0), 0);
+  const now = Date.now();
+  const LIVE_WINDOW_MS = 45000; // > 2x the 20s client heartbeat, tolerates network jitter
+  const liveCount = rows.filter((v) => now - v.lastSeenAt < LIVE_WINDOW_MS).length;
 
   const tableRows = rows.map((v) => {
+    const isLive = now - v.lastSeenAt < LIVE_WINDOW_MS;
     const clicksHtml = v.clicks && v.clicks.length
       ? v.clicks.map((c) => `<span class="pill">${escapeHtml(c.label)}</span>`).join(' ')
       : '<span class="muted">—</span>';
-    return `<tr>
-      <td class="mono">${escapeHtml(v.ip)}</td>
+    return `<tr${isLive ? ' class="live-row"' : ''}>
+      <td class="mono">${escapeHtml(v.ip)}${isLive ? ' <span class="live-dot" title="Şu an sitede"></span>' : ''}</td>
       <td>${formatDate(v.startedAt)}</td>
       <td>${formatDate(v.lastSeenAt)}</td>
       <td>${formatDuration(v.lastSeenAt - v.startedAt)}</td>
@@ -54,6 +58,7 @@ async function renderAdmin(res) {
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="refresh" content="10">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Fortify — Ziyaretçi Paneli</title>
@@ -67,13 +72,22 @@ async function renderAdmin(res) {
   .stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px 22px; min-width: 140px; }
   .stat strong { display: block; font-size: 1.6rem; font-weight: 700; }
   .stat span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+  .stat--live { border-color: rgba(74,222,128,0.4); background: rgba(74,222,128,0.07); }
+  .stat--live strong { color: #4ade80; }
   table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; }
   th, td { text-align: left; padding: 12px 16px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
   th { text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.72rem; color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.03); }
   tr:last-child td { border-bottom: none; }
+  tr.live-row { background: rgba(74,222,128,0.05); }
   .mono { font-family: ui-monospace, Consolas, monospace; }
   .muted { color: rgba(255,255,255,0.3); }
   .pill { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #93c5fd; border-radius: 999px; padding: 3px 10px; font-size: 0.76rem; margin: 2px 3px 2px 0; }
+  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 rgba(74,222,128,0.6); animation: live-pulse 1.6s ease-out infinite; vertical-align: middle; }
+  @keyframes live-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+    70% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+  }
   .table-wrap { overflow-x: auto; }
   a.refresh { color: #93c5fd; font-size: 0.85rem; text-decoration: none; }
   a.refresh:hover { text-decoration: underline; }
@@ -81,8 +95,9 @@ async function renderAdmin(res) {
 </head>
 <body>
   <h1>Fortify — Ziyaretçi Paneli</h1>
-  <p class="sub"><a class="refresh" href="/admin">Yenile</a></p>
+  <p class="sub">10 saniyede bir otomatik yenilenir · <a class="refresh" href="/admin">şimdi yenile</a></p>
   <div class="stats">
+    <div class="stat stat--live"><strong>${liveCount}</strong><span>Şu an sitede</span></div>
     <div class="stat"><strong>${rows.length}</strong><span>Toplam ziyaret</span></div>
     <div class="stat"><strong>${totalClicks}</strong><span>Toplam buton tıklaması</span></div>
   </div>
