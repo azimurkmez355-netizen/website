@@ -1,12 +1,15 @@
 # Fortify — website
 
-Bu depo Vercel üzerinden otomatik deploy edilecek şekilde ayarlandı (GitHub'a
-her `git push origin main` sonrası Vercel yeni sürümü yayına alır).
+Bu depo Railway üzerinden otomatik deploy edilecek şekilde ayarlandı (GitHub'a
+her `git push origin main` sonrası Railway yeni sürümü yayına alır).
 
 - `public/` — statik site (index.html, style.css, script.js)
-- `api/` — ziyaretçi takibi ve `/admin` panelini besleyen serverless fonksiyonlar
-- `lib/storage.js` — ziyaretçi verisi hafızada tutulur, dışarıda veritabanı yok.
-  Bu yüzden yoğun trafikte veya cold start/redeploy sonrası liste sıfırlanabilir.
-  `/admin` şifresizdir, siteden hiçbir yere link verilmez.
+- `server.js` — Express sunucusu: statik siteyi servis eder, ziyaretçi takibi
+  API'lerini (`/api/visit`, `/api/heartbeat`, `/api/click`) ve `/admin`
+  panelini barındırır
+- Ziyaretçi verisi hafızada tutulur ve `data/visits.json` dosyasına
+  yedeklenir (yalnızca aynı deploy içinde kalıcı — yeni bir `git push`
+  sonrası liste sıfırlanır). `/admin` şifresizdir, siteden hiçbir yere
+  link verilmez.
 
-Yerel geliştirme: `vercel dev`
+Yerel geliştirme: `npm install && node server.js`

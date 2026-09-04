@@ -1,20 +1,98 @@
-const { createVisit, touchVisit, addClick, listVisits } = require('../lib/storage');
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const crypto = require('crypto');
 
-function getClientIp(req) {
-  const fwd = req.headers['x-forwarded-for'];
-  if (fwd) return fwd.split(',')[0].trim();
-  return req.headers['x-real-ip'] || req.socket?.remoteAddress || 'bilinmiyor';
-}
+const app = express();
+app.set('trust proxy', true);
+app.use(express.json());
 
-function parseBody(req) {
-  if (req.body && typeof req.body === 'object') return req.body;
+const PORT = process.env.PORT || 3000;
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+const DATA_DIR = path.join(__dirname, 'data');
+const DATA_FILE = path.join(DATA_DIR, 'visits.json');
+const MAX_CLICKS_PER_VISIT = 50;
+const MAX_VISITS = 500;
+
+/* ---------- storage ----------
+ * A single long-running process (unlike serverless), so a plain in-memory
+ * Map is safe here — no concurrent-instance races to worry about. Also
+ * mirrored to a JSON file so a crash/restart within the same deploy
+ * doesn't lose everything (a fresh `git push` deploy still starts empty,
+ * since Railway's filesystem isn't persisted across deploys). */
+const visits = new Map();
+
+function loadVisits() {
   try {
-    return JSON.parse(req.body || '{}');
+    const raw = fs.readFileSync(DATA_FILE, 'utf8');
+    JSON.parse(raw).forEach((v) => visits.set(v.id, v));
   } catch (err) {
-    return {};
+    // no data file yet — start empty
   }
 }
 
+let saveTimer = null;
+function scheduleSave() {
+  if (saveTimer) return;
+  saveTimer = setTimeout(() => {
+    saveTimer = null;
+    try {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+      fs.writeFileSync(DATA_FILE, JSON.stringify([...visits.values()]));
+    } catch (err) {
+      console.error('visits.json yazılamadı:', err.message);
+    }
+  }, 2000);
+}
+
+loadVisits();
+
+function getClientIp(req) {
+  return req.ip || req.socket.remoteAddress || 'bilinmiyor';
+}
+
+/* ---------- tracking API (public — called from public/script.js) ---------- */
+app.post('/api/visit', (req, res) => {
+  const id = crypto.randomUUID();
+  const now = Date.now();
+  visits.set(id, {
+    id,
+    ip: getClientIp(req),
+    userAgent: (req.get('user-agent') || '').slice(0, 300),
+    startedAt: now,
+    lastSeenAt: now,
+    clicks: [],
+  });
+  if (visits.size > MAX_VISITS) {
+    const oldestKey = visits.keys().next().value;
+    visits.delete(oldestKey);
+  }
+  scheduleSave();
+  res.json({ id });
+});
+
+app.post('/api/heartbeat', (req, res) => {
+  const v = req.body && visits.get(req.body.id);
+  if (v) {
+    v.lastSeenAt = Date.now();
+    scheduleSave();
+  }
+  res.status(204).end();
+});
+
+app.post('/api/click', (req, res) => {
+  const { id, label } = req.body || {};
+  const v = id && visits.get(id);
+  if (v && label && v.clicks.length < MAX_CLICKS_PER_VISIT) {
+    v.clicks.push({ label: String(label).slice(0, 200), at: Date.now() });
+    v.lastSeenAt = Date.now();
+    scheduleSave();
+  }
+  res.status(204).end();
+});
+
+/* ---------- admin panel (no login — not linked anywhere in the site) ---------- */
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -32,16 +110,16 @@ function formatDate(ts) {
   return new Date(ts).toLocaleString('tr-TR', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Europe/Istanbul' });
 }
 
-async function renderAdmin(res) {
-  const rows = await listVisits();
-  const totalClicks = rows.reduce((sum, v) => sum + (v.clicks?.length || 0), 0);
+app.get('/admin', (req, res) => {
+  const rows = [...visits.values()].sort((a, b) => b.lastSeenAt - a.lastSeenAt);
+  const totalClicks = rows.reduce((sum, v) => sum + v.clicks.length, 0);
   const now = Date.now();
   const LIVE_WINDOW_MS = 45000; // > 2x the 20s client heartbeat, tolerates network jitter
   const liveCount = rows.filter((v) => now - v.lastSeenAt < LIVE_WINDOW_MS).length;
 
   const tableRows = rows.map((v) => {
     const isLive = now - v.lastSeenAt < LIVE_WINDOW_MS;
-    const clicksHtml = v.clicks && v.clicks.length
+    const clicksHtml = v.clicks.length
       ? v.clicks.map((c) => `<span class="pill">${escapeHtml(c.label)}</span>`).join(' ')
       : '<span class="muted">—</span>';
     return `<tr${isLive ? ' class="live-row"' : ''}>
@@ -53,8 +131,9 @@ async function renderAdmin(res) {
     </tr>`;
   }).join('');
 
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.status(200).send(`<!DOCTYPE html>
+  res.set('Content-Type', 'text/html; charset=utf-8');
+  res.set('Cache-Control', 'no-store');
+  res.send(`<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -109,46 +188,15 @@ async function renderAdmin(res) {
   </div>
 </body>
 </html>`);
-}
+});
 
-// One function handles /api/visit, /api/heartbeat, /api/click and /admin
-// (see vercel.json rewrites) so they all share the same warm module-scope
-// storage instance instead of four isolated, non-communicating functions.
-module.exports = async (req, res) => {
-  const action = req.query?.action;
+/* ---------- static site ---------- */
+app.use(express.static(PUBLIC_DIR, { index: 'index.html' }));
 
-  if (action === 'admin') {
-    await renderAdmin(res);
-    return;
-  }
+app.use((req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+});
 
-  if (req.method !== 'POST') {
-    res.status(405).end();
-    return;
-  }
-
-  if (action === 'visit') {
-    const id = await createVisit({
-      ip: getClientIp(req),
-      userAgent: (req.headers['user-agent'] || '').slice(0, 300),
-    });
-    res.status(200).json({ id });
-    return;
-  }
-
-  const { id, label } = parseBody(req);
-
-  if (action === 'heartbeat') {
-    await touchVisit(id);
-    res.status(204).end();
-    return;
-  }
-
-  if (action === 'click') {
-    await addClick(id, label);
-    res.status(204).end();
-    return;
-  }
-
-  res.status(404).end();
-};
+app.listen(PORT, () => {
+  console.log(`Fortify sunucusu ${PORT} portunda çalışıyor.`);
+});

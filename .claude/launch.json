@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "fortify-static",
-      "runtimeExecutable": "vercel",
-      "runtimeArgs": ["dev", "--yes", "--listen", "3000"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
       "port": 3000
     }
   ]
