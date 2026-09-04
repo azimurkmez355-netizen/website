@@ -4,6 +4,38 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const PHONE = '905355534092';
 
+  /* ---------- Visit & click tracking (feeds /admin) ---------- */
+  let visitId = null;
+
+  fetch('/api/visit', { method: 'POST' })
+    .then((r) => r.json())
+    .then((data) => { visitId = data.id; })
+    .catch(() => {});
+
+  function sendBeaconJson(url, payload) {
+    try {
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      navigator.sendBeacon(url, blob);
+    } catch (err) {
+      // tracking is best-effort only
+    }
+  }
+
+  function sendHeartbeat() {
+    if (visitId) sendBeaconJson('/api/heartbeat', { id: visitId });
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') sendHeartbeat();
+  });
+  window.addEventListener('pagehide', sendHeartbeat);
+
+  function trackClick(label) {
+    if (visitId && label) sendBeaconJson('/api/click', { id: visitId, label });
+  }
+  document.querySelectorAll('[data-track]').forEach((el) => {
+    el.addEventListener('click', () => trackClick(el.dataset.track));
+  });
+
   /* ---------- CTA routing: call on mobile, WhatsApp on desktop ---------- */
   function isMobileDevice() {
     return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
@@ -19,7 +51,10 @@
   }
 
   document.querySelectorAll('[data-cta]').forEach((btn) => {
-    btn.addEventListener('click', () => handleCTA(btn.dataset.cta));
+    btn.addEventListener('click', () => {
+      trackClick(btn.dataset.cta);
+      handleCTA(btn.dataset.cta);
+    });
   });
 
   /* ---------- Footer year ---------- */

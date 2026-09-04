@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "fortify-static",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "serve", "-s", ".", "-l", "3000"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--env-file=.env", "server.js"],
       "port": 3000
     }
   ]
